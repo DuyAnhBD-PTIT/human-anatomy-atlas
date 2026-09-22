@@ -6,8 +6,6 @@ SPA học giải phẫu cơ thể với mô hình 3D tương tác và viewer có
 
 **Trạng thái: bản thử nghiệm kỹ thuật.** Bản dịch và nội dung chức năng/bệnh lý chưa được duyệt chuyên môn; chưa phải atlas học thuật hoàn chỉnh hoặc được xác nhận bám sát giáo trình của các trường đại học Y.
 
-Tên package là `anatomy-atlas`; `PPP` chỉ là tên thư mục workspace phát triển hiện tại. Tên repository GitHub và mô tả About chưa được cấu hình trong workspace này. Khi xuất bản, dùng mô tả ngắn ở trên cho GitHub About để đồng bộ với `package.json`.
-
 ## Mục lục
 
 - [Bối cảnh](#bối-cảnh)
@@ -39,15 +37,15 @@ Dự án giúp khám phá vị trí và quan hệ giữa các cấu trúc trên 
 
 ### Tech stack
 
-| Thành phần | Công nghệ đang dùng                                               |
-| ---------- | ----------------------------------------------------------------- |
-| UI         | React 19.2, TypeScript 5.7, CSS thuần, Lucide React               |
-| Build      | Vite 6, npm lockfile                                              |
-| Viewer     | Three.js 0.180, React Three Fiber 9, Drei 10                      |
-| Rendering  | Camera trực giao, MeshMatcapMaterial tự tạo, render theo nhu cầu  |
-| Animation  | Anime.js 4 cho xoay; slider cập nhật vị trí tách                  |
-| Pipeline   | Python chuẩn, Node.js, OBJLoader, glTF Transform 4, meshoptimizer |
-| Kiểm tra   | ESLint, TypeScript, Node assertions, Playwright/Edge cho profiling              |
+| Thành phần | Công nghệ đang dùng                                                |
+| ---------- | ------------------------------------------------------------------ |
+| UI         | React 19.2, TypeScript 5.7, CSS thuần, Lucide React                |
+| Build      | Vite 6, npm lockfile                                               |
+| Viewer     | Three.js 0.180, React Three Fiber 9, Drei 10                       |
+| Rendering  | Camera trực giao, MeshMatcapMaterial tự tạo, render theo nhu cầu   |
+| Animation  | Anime.js 4 cho xoay; slider cập nhật vị trí tách                   |
+| Pipeline   | Python chuẩn, Node.js, OBJLoader, glTF Transform 4, meshoptimizer  |
+| Kiểm tra   | ESLint, TypeScript, Node assertions, Playwright/Edge cho profiling |
 
 State dùng React hooks. Phiên bản chính xác nằm trong `package-lock.json`.
 
@@ -105,15 +103,15 @@ export function Preview(props: { assets: ModelAsset[]; bounds: ModelBounds }) {
 
 ### Lệnh npm
 
-| Lệnh | Mục đích |
-| --- | --- |
-| `npm run dev` | Chạy Vite development server |
-| `npm run build` | Typecheck và tạo bản production |
-| `npm run preview` | Phục vụ bản build để kiểm tra cục bộ |
-| `npm run lint` | Kiểm tra code theo ESLint hiện tại |
-| `npm run data:build` | Chuyển nguồn đã giải nén thành catalog/GLB |
-| `npm run data:validate` | Kiểm tra integrity dataset BodyParts3D |
-| `npm run profile:render` | Đo CPU/GPU khi server ứng dụng đang chạy |
+| Lệnh                     | Mục đích                                   |
+| ------------------------ | ------------------------------------------ |
+| `npm run dev`            | Chạy Vite development server               |
+| `npm run build`          | Typecheck và tạo bản production            |
+| `npm run preview`        | Phục vụ bản build để kiểm tra cục bộ       |
+| `npm run lint`           | Kiểm tra code theo ESLint hiện tại         |
+| `npm run data:build`     | Chuyển nguồn đã giải nén thành catalog/GLB |
+| `npm run data:validate`  | Kiểm tra integrity dataset BodyParts3D     |
+| `npm run profile:render` | Đo CPU/GPU khi server ứng dụng đang chạy   |
 
 Dự án chưa cung cấp executable CLI riêng; các lệnh trên là npm scripts trong repository.
 
@@ -189,14 +187,14 @@ npm run data:validate
 
 Các cấu hình dưới đây là **ước tính cho bộ anatomy hiện tại**, không phải yêu cầu tối thiểu đã nghiệm thu. Khi thay model cho domain khác, phải đo lại; tổng tam giác, số mesh/draw calls, shader và độ phân giải quan trọng hơn dung lượng GLB nén.
 
-| Trường hợp | Máy đích / cấu hình gợi ý | Thiết lập viewer |
-| --- | --- | --- |
-| Phát triển UI, thử một vài hệ | CPU hiện đại ≥4 nhân, RAM 8 GB, WebGL2 có tăng tốc phần cứng | `maxDpr={1}`, chỉ bật các nhóm cần thiết |
-| Xem toàn thân trên desktop | RAM 16 GB, CPU hiệu năng đơn nhân tốt; GPU rời ≥2 GB VRAM, ưu tiên 4 GB để có dư địa | `maxDpr={1.5}`, viewport khoảng 1080p; giữ render theo nhu cầu |
-| GPU tích hợp / máy yếu | Chưa xác lập cấu hình tối thiểu; bắt đầu với ít nhóm | `maxDpr={1}`; cần giảm geometry/draw calls nếu vẫn chậm |
-| Mobile | Chưa nghiệm thu full model hoặc chốt RAM/GPU tối thiểu | DPR 1, tải ít nhóm, chuẩn bị asset/LOD nhẹ hơn; giảm DPR không giải quyết chi phí hàng triệu tam giác |
-| Dự án mới có model nhẹ | Không áp dụng máy móc cấu hình anatomy | Bắt đầu DPR 1, đo rồi mới tăng chất lượng |
-| Build lại dữ liệu nguồn | Node.js 22.22+, npm 11, Python 3.11+, vài GB dung lượng trống; RAM 16 GB là mức khởi đầu đề xuất | Python chỉ cần cho pipeline nguồn; chưa đo peak RAM của pipeline |
+| Trường hợp                    | Máy đích / cấu hình gợi ý                                                                        | Thiết lập viewer                                                                                      |
+| ----------------------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
+| Phát triển UI, thử một vài hệ | CPU hiện đại ≥4 nhân, RAM 8 GB, WebGL2 có tăng tốc phần cứng                                     | `maxDpr={1}`, chỉ bật các nhóm cần thiết                                                              |
+| Xem toàn thân trên desktop    | RAM 16 GB, CPU hiệu năng đơn nhân tốt; GPU rời ≥2 GB VRAM, ưu tiên 4 GB để có dư địa             | `maxDpr={1.5}`, viewport khoảng 1080p; giữ render theo nhu cầu                                        |
+| GPU tích hợp / máy yếu        | Chưa xác lập cấu hình tối thiểu; bắt đầu với ít nhóm                                             | `maxDpr={1}`; cần giảm geometry/draw calls nếu vẫn chậm                                               |
+| Mobile                        | Chưa nghiệm thu full model hoặc chốt RAM/GPU tối thiểu                                           | DPR 1, tải ít nhóm, chuẩn bị asset/LOD nhẹ hơn; giảm DPR không giải quyết chi phí hàng triệu tam giác |
+| Dự án mới có model nhẹ        | Không áp dụng máy móc cấu hình anatomy                                                           | Bắt đầu DPR 1, đo rồi mới tăng chất lượng                                                             |
+| Build lại dữ liệu nguồn       | Node.js 22.22+, npm 11, Python 3.11+, vài GB dung lượng trống; RAM 16 GB là mức khởi đầu đề xuất | Python chỉ cần cho pipeline nguồn; chưa đo peak RAM của pipeline                                      |
 
 Máy đã đo: **Core i5-11400H, RAM khoảng 32 GB, RTX 3050 Laptop**. Ở mức tách 100%, GPU render median khoảng **6,95–6,98 ms/frame**, với 2.222 draw calls và khoảng 6,44 triệu tam giác hiển thị. Đây là phép đo headless ở góc nhìn cố định, không phải cam kết 60 FPS khi kéo chuột hoặc trên GPU khác có cùng VRAM.
 
@@ -230,14 +228,14 @@ Kiểm tra mô hình tải được, chọn/ẩn hệ, xoay và tách/lắp ho�
 
 ### Bước 3 — Xác định phần giữ và phần thay
 
-| Phần | Giữ khi làm atlas | Khi chuyển sang sản phẩm/domain khác |
-| --- | --- | --- |
-| `src/viewer/` | Giữ renderer/animation | Có thể giữ và cấu hình lại |
-| `src/main.tsx`, `src/style.css` | Tùy chỉnh UI | Viết host UI/state mới; không copy CSS toàn trang vào app hiện có |
-| `src/domain/` | Giữ kiểu catalog | Thay bằng metadata sản phẩm/linh kiện của bạn |
-| `public/anatomy/` | Giữ GLB/catalog/NOTICE | Thay asset và attribution tương ứng |
-| `scripts/anatomy/`, `data/source-manifest.json` | Giữ để tái tạo nguồn | Chỉ bỏ sau khi có pipeline và validator cho dataset mới |
-| `scripts/profile-render.mjs` | Dùng với UI anatomy hiện tại | Đổi selector/URL đo theo UI mới |
+| Phần                                            | Giữ khi làm atlas            | Khi chuyển sang sản phẩm/domain khác                              |
+| ----------------------------------------------- | ---------------------------- | ----------------------------------------------------------------- |
+| `src/viewer/`                                   | Giữ renderer/animation       | Có thể giữ và cấu hình lại                                        |
+| `src/main.tsx`, `src/style.css`                 | Tùy chỉnh UI                 | Viết host UI/state mới; không copy CSS toàn trang vào app hiện có |
+| `src/domain/`                                   | Giữ kiểu catalog             | Thay bằng metadata sản phẩm/linh kiện của bạn                     |
+| `public/anatomy/`                               | Giữ GLB/catalog/NOTICE       | Thay asset và attribution tương ứng                               |
+| `scripts/anatomy/`, `data/source-manifest.json` | Giữ để tái tạo nguồn         | Chỉ bỏ sau khi có pipeline và validator cho dataset mới           |
+| `scripts/profile-render.mjs`                    | Dùng với UI anatomy hiện tại | Đổi selector/URL đo theo UI mới                                   |
 
 Đổi tên package trong `package.json` và tiêu đề trong `index.html` nếu cần. Sau khi thay dependency hoặc metadata package, chạy `npm install` để đồng bộ lockfile; các lần cài tiếp theo dùng `npm ci`.
 
@@ -323,7 +321,9 @@ export default function AnatomyEmbed() {
         setDataset({
           bounds: data.bounds,
           systems: data.systems
-            .filter((asset) => asset.id !== "skin" && asset.id !== "reproductive")
+            .filter(
+              (asset) => asset.id !== "skin" && asset.id !== "reproductive",
+            )
             .map((asset) => ({
               ...asset,
               url: new URL(asset.url, base).href,
@@ -375,22 +375,22 @@ Hai URL trên là ví dụ, cần có file thật. Khi host chạy dưới subpa
 
 Bắt đầu từ [EmbeddedModel.tsx](src/examples/EmbeddedModel.tsx), rồi thay các nút bằng UI của bạn. Các props bắt buộc được thể hiện đầy đủ trong ví dụ.
 
-| Props | Ý nghĩa và cách dùng |
-| --- | --- |
-| `assets`, `bounds` | Dataset; giữ reference ổn định bằng state, constant hoặc memo |
-| `visible` | Danh sách **ID nhóm** cần hiện/tải; ẩn nhóm không giải phóng cache ngay |
-| `selectedMeshes` | `Set<string>` chứa **ID mesh**, không phải ID concept hay ID nhóm |
-| `hovered`, `onHover` | Mesh đang hover và callback cập nhật state |
-| `onPick` | Trả mesh ID; host tra metadata để mở panel hoặc chọn cả cụm |
-| `isolated` | Khi bật, chỉ hiện mesh thuộc selection trong các nhóm đang visible |
-| `explode` | Tiến độ từ 0 đến 1; clamp trong viewer |
-| `angle`, `zoom` | Góc xoay đích theo radian; zoom dương, ví dụ mặc định 1 |
-| `resetKey` | Tăng giá trị để reset controls; host đồng thời đặt lại angle/zoom/explode/selection |
-| `retry` | Tăng giá trị để thử tải lại nhóm đang visible bị lỗi |
-| `onLoading` | Nhận delta có dấu: `setLoading(n => n + delta)` |
-| `onError`, `onMiss` | Hiện lỗi tải; xử lý click vùng trống (`onMiss` tùy chọn) |
-| `maxDpr` | Tùy chọn, mặc định 1.5; dùng 1 cho profile tiết kiệm pixel |
-| `explodeOptions` | Tùy chỉnh khoảng cách bóc tách, xem bên dưới |
+| Props                | Ý nghĩa và cách dùng                                                                |
+| -------------------- | ----------------------------------------------------------------------------------- |
+| `assets`, `bounds`   | Dataset; giữ reference ổn định bằng state, constant hoặc memo                       |
+| `visible`            | Danh sách **ID nhóm** cần hiện/tải; ẩn nhóm không giải phóng cache ngay             |
+| `selectedMeshes`     | `Set<string>` chứa **ID mesh**, không phải ID concept hay ID nhóm                   |
+| `hovered`, `onHover` | Mesh đang hover và callback cập nhật state                                          |
+| `onPick`             | Trả mesh ID; host tra metadata để mở panel hoặc chọn cả cụm                         |
+| `isolated`           | Khi bật, chỉ hiện mesh thuộc selection trong các nhóm đang visible                  |
+| `explode`            | Tiến độ từ 0 đến 1; clamp trong viewer                                              |
+| `angle`, `zoom`      | Góc xoay đích theo radian; zoom dương, ví dụ mặc định 1                             |
+| `resetKey`           | Tăng giá trị để reset controls; host đồng thời đặt lại angle/zoom/explode/selection |
+| `retry`              | Tăng giá trị để thử tải lại nhóm đang visible bị lỗi                                |
+| `onLoading`          | Nhận delta có dấu: `setLoading(n => n + delta)`                                     |
+| `onError`, `onMiss`  | Hiện lỗi tải; xử lý click vùng trống (`onMiss` tùy chọn)                            |
+| `maxDpr`             | Tùy chọn, mặc định 1.5; dùng 1 cho profile tiết kiệm pixel                          |
+| `explodeOptions`     | Tùy chỉnh khoảng cách bóc tách, xem bên dưới                                        |
 
 Khi tìm kiếm chọn một mesh trong nhóm ẩn, host cần bật nhóm đó. Viewer không tự biết quan hệ concept/linh kiện. Khi cần thay selection, tạo `Set` mới để React nhận thay đổi.
 
@@ -494,16 +494,16 @@ API developer này chỉ có khi bật `?profile`, hiện dành cho một viewer
 
 ## Xử lý lỗi khi nhúng
 
-| Hiện tượng | Kiểm tra |
-| --- | --- |
-| Canvas trống | Container có chiều cao; có WebGL2; console không báo lỗi; assets có count >0 hoặc không khai báo count |
-| GLB 404 / lỗi parse HTML | URL/base path; server có đang trả index.html thay cho GLB không |
-| CDN không tải | CORS và quyền truy cập URL; thử URL trực tiếp |
-| Mô hình lệch / tách sai | Bounds, đơn vị, gốc tọa độ và parent transform; không center từng nhóm riêng |
-| Click mở sai nội dung | Mesh name trùng; host đang nhầm mesh ID với group/concept ID |
-| Đổi dataset vẫn thấy model cũ | Đổi React `key`; cache theo asset ID sống đến khi unmount |
-| Controls giật hoặc zoom bị ghi đè | Hai controls/camera controller cùng hoạt động trong một Canvas |
-| Máy yếu vẫn chậm ở DPR 1 | Chi phí geometry/draw calls/picking; giảm asset đang tải/hiện và tối ưu model, không chỉ giảm pixel |
+| Hiện tượng                        | Kiểm tra                                                                                               |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| Canvas trống                      | Container có chiều cao; có WebGL2; console không báo lỗi; assets có count >0 hoặc không khai báo count |
+| GLB 404 / lỗi parse HTML          | URL/base path; server có đang trả index.html thay cho GLB không                                        |
+| CDN không tải                     | CORS và quyền truy cập URL; thử URL trực tiếp                                                          |
+| Mô hình lệch / tách sai           | Bounds, đơn vị, gốc tọa độ và parent transform; không center từng nhóm riêng                           |
+| Click mở sai nội dung             | Mesh name trùng; host đang nhầm mesh ID với group/concept ID                                           |
+| Đổi dataset vẫn thấy model cũ     | Đổi React `key`; cache theo asset ID sống đến khi unmount                                              |
+| Controls giật hoặc zoom bị ghi đè | Hai controls/camera controller cùng hoạt động trong một Canvas                                         |
+| Máy yếu vẫn chậm ở DPR 1          | Chi phí geometry/draw calls/picking; giảm asset đang tải/hiện và tối ưu model, không chỉ giảm pixel    |
 
 Tài liệu bổ sung: [API/module boundaries](docs/EMBEDDING.md), [ví dụ host](src/examples/EmbeddedModel.tsx), [viewer exports](src/viewer/index.ts).
 
@@ -522,13 +522,13 @@ Xem [đánh giá P0–P8](docs/PROJECT_STATUS.md) và [execution plan](EXECUTION
 
 Các export công khai nằm trong [src/viewer/index.ts](src/viewer/index.ts):
 
-| Export | Trách nhiệm |
-| --- | --- |
-| `ModelViewer(props: ModelViewerProps)` | Component có Canvas, loader, camera, controls và lựa chọn mesh |
-| `ModelScene(props: ModelViewerProps)` | Nội dung scene để đặt trong Canvas do host sở hữu |
-| `animateRotation(rotation, angle, invalidate)` | Tween góc xoay, trả hàm dừng animation |
-| `explosionOffset(midpoint, center, height, meshId, groupIndex, groupCount, options?)` | Tính vector tách từ rest pose |
-| `ModelViewerProps`, `ModelAsset`, `ModelBounds`, `ExplodeOptions` | TypeScript types cho host và dữ liệu |
+| Export                                                                                | Trách nhiệm                                                    |
+| ------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| `ModelViewer(props: ModelViewerProps)`                                                | Component có Canvas, loader, camera, controls và lựa chọn mesh |
+| `ModelScene(props: ModelViewerProps)`                                                 | Nội dung scene để đặt trong Canvas do host sở hữu              |
+| `animateRotation(rotation, angle, invalidate)`                                        | Tween góc xoay, trả hàm dừng animation                         |
+| `explosionOffset(midpoint, center, height, meshId, groupIndex, groupCount, options?)` | Tính vector tách từ rest pose                                  |
+| `ModelViewerProps`, `ModelAsset`, `ModelBounds`, `ExplodeOptions`                     | TypeScript types cho host và dữ liệu                           |
 
 Chi tiết props/callback nằm trong phần embed và [tài liệu API/module](docs/EMBEDDING.md). Viewer yêu cầu browser/WebGL; chưa có npm package, iframe SDK hoặc adapter SSR sẵn.
 
@@ -546,8 +546,4 @@ README sử dụng cấu trúc của [Standard Readme](https://github.com/Richar
 
 ## Giấy phép
 
-**Mã ứng dụng: UNLICENSED.** Chưa công bố giấy phép mã nguồn hoặc danh tính chủ sở hữu quyền tác giả. Quyền đối với từng phần mã thuộc chủ thể nắm quyền tương ứng; cần chủ dự án xác nhận thông tin này trước khi công bố giấy phép. README không tự cấp quyền sử dụng lại mã.
-
 **Dữ liệu BodyParts3D: CC-BY-4.0 — Creative Commons Attribution 4.0 International.** Chủ thể ghi công: © The Database Center for Life Science (DBCLS). Giữ attribution trong [NOTICE](public/anatomy/NOTICE.txt); xem [giấy phép nguồn](https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html) và [nội dung CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-
-OBJ cũ có comment giấy phép lịch sử; snapshot license hiện hành được pin cùng nguồn. Các thay đổi dữ liệu gồm đổi trục, OBJ → GLB, phân nhóm, nén meshopt và thêm tên dịch nháp. Giấy phép dataset không tự áp dụng cho mã ứng dụng hoặc asset thay thế trong dự án fork.
