@@ -1,0 +1,10 @@
+node_modules/
+.tools/
+data/source/
+data/work/
+dist/
+*.tsbuildinfo
+test-results/
+
+__pycache__/
+*.pyc

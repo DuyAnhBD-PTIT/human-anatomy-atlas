@@ -1,0 +1,43 @@
+{
+  "name": "anatomy-atlas",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "data:build": "node scripts/anatomy/build.mjs",
+    "lint": "eslint src scripts/anatomy/build.mjs scripts/anatomy/validate.mjs scripts/profile-render.mjs",
+    "data:validate": "node scripts/anatomy/validate.mjs",
+    "profile:render": "node scripts/profile-render.mjs"
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.0.0",
+    "@react-three/fiber": "^9.0.0",
+    "animejs": "^4.0.0",
+    "lucide-react": "^0.468.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@gltf-transform/core": "^4.0.0",
+    "@gltf-transform/extensions": "^4.0.0",
+    "@gltf-transform/functions": "^4.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/three": "^0.180.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "eslint": "^10.11.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "meshoptimizer": "^1.2.0",
+    "playwright": "^1.63.0",
+    "prettier": "^3.9.8",
+    "typescript": "~5.7.0",
+    "typescript-eslint": "^8.70.1",
+    "vite": "^6.0.0"
+  },
+  "description": "SPA học giải phẫu cơ thể với mô hình 3D tương tác và viewer có thể nhúng vào dự án React."
+}

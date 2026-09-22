@@ -1,0 +1,81 @@
+{
+  "meshCount": 2234,
+  "conceptCount": 3432,
+  "totalTriangles": 6681030,
+  "bounds": {
+    "min": [
+      -334.1189880371094,
+      -78.11119842529297,
+      -45.24760055541992
+    ],
+    "max": [
+      332.82501220703125,
+      1651.6300048828125,
+      246.7830047607422
+    ]
+  },
+  "systemCounts": [
+    {
+      "id": "skeleton",
+      "count": 312
+    },
+    {
+      "id": "muscles",
+      "count": 424
+    },
+    {
+      "id": "heart",
+      "count": 1
+    },
+    {
+      "id": "respiratory",
+      "count": 101
+    },
+    {
+      "id": "digestive",
+      "count": 74
+    },
+    {
+      "id": "urinary",
+      "count": 6
+    },
+    {
+      "id": "arteries",
+      "count": 650
+    },
+    {
+      "id": "veins",
+      "count": 429
+    },
+    {
+      "id": "nervous",
+      "count": 118
+    },
+    {
+      "id": "endocrine",
+      "count": 7
+    },
+    {
+      "id": "reproductive",
+      "count": 8
+    },
+    {
+      "id": "skin",
+      "count": 4
+    },
+    {
+      "id": "sensory",
+      "count": 17
+    },
+    {
+      "id": "connective",
+      "count": 26
+    },
+    {
+      "id": "other",
+      "count": 57
+    }
+  ],
+  "classification": "Display groups derived from DBCLS concept ancestry; unresolved items remain explicit. Medical review required.",
+  "translations": "Six illustrative VI/Latin labels are draft, not reviewed."
+}
