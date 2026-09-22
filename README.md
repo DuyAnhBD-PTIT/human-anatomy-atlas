@@ -196,17 +196,11 @@ Các cấu hình dưới đây là **ước tính cho bộ anatomy hiện tại*
 | Dự án mới có model nhẹ        | Không áp dụng máy móc cấu hình anatomy                                                           | Bắt đầu DPR 1, đo rồi mới tăng chất lượng                                                             |
 | Build lại dữ liệu nguồn       | Node.js 22.22+, npm 11, Python 3.11+, vài GB dung lượng trống; RAM 16 GB là mức khởi đầu đề xuất | Python chỉ cần cho pipeline nguồn; chưa đo peak RAM của pipeline                                      |
 
-Máy đã đo: **Core i5-11400H, RAM khoảng 32 GB, RTX 3050 Laptop**. Ở mức tách 100%, GPU render median khoảng **6,95–6,98 ms/frame**, với 2.222 draw calls và khoảng 6,44 triệu tam giác hiển thị. Đây là phép đo headless ở góc nhìn cố định, không phải cam kết 60 FPS khi kéo chuột hoặc trên GPU khác có cùng VRAM.
-
-Ước tính buffer geometry + framebuffer khoảng **184 MiB** tại viewport đã đo, chưa gồm toàn bộ driver/compositor/loader. Không dùng con số này làm yêu cầu RAM/VRAM tối thiểu. Xem [phương pháp, số đo và giới hạn](docs/PERFORMANCE.md).
-
 ## Fork toàn bộ dự án — từng bước
 
 Chọn hướng này khi muốn giữ UI anatomy, pipeline dữ liệu và các công cụ vận hành làm nền tảng cho sản phẩm riêng. Nếu chỉ cần khung xem 3D trong một app hiện có, xem phần embed bên dưới.
 
 ### Bước 1 — Tạo bản sao repository
-
-Trên GitHub, dùng **Fork** vào tài khoản của bạn, rồi clone fork. Các chuỗi `YOUR_ACCOUNT`, `YOUR_REPO`, `SOURCE_ACCOUNT`, `SOURCE_REPO` là placeholder, cần thay bằng URL thật; dự án không giả định sẵn một repository công khai.
 
 ```bash
 git clone https://github.com/YOUR_ACCOUNT/YOUR_REPO.git
